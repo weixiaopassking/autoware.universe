@@ -231,4 +231,37 @@ std::optional<lanelet::ConstLineString3d> getStopLineFromMap(
 
   return stop_line.front();
 }
+
+bool isTrafficLightArrowActivated(
+  lanelet::ConstLanelet lane, const std::map<int, TrafficSignalStamped> & tl_infos)
+{
+  using TrafficSignalElement = autoware_perception_msgs::msg::TrafficSignalElement;
+
+  const auto & turn_direction = lane.attributeOr("turn_direction", "else");
+  std::optional<int> tl_id = std::nullopt;
+  for (auto && tl_reg_elem : lane.regulatoryElementsAs<lanelet::TrafficLight>()) {
+    tl_id = tl_reg_elem->id();
+    break;
+  }
+  if (!tl_id) {
+    // this lane has no traffic light
+    return false;
+  }
+  const auto tl_info_it = tl_infos.find(tl_id.value());
+  if (tl_info_it == tl_infos.end()) {
+    // the info of this traffic light is not available
+    return false;
+  }
+  const auto & tl_info = tl_info_it->second;
+  for (auto && tl_light : tl_info.signal.elements) {
+    if (tl_light.color != TrafficSignalElement::GREEN) continue;
+    if (tl_light.status != TrafficSignalElement::SOLID_ON) continue;
+    if (turn_direction == std::string("left") && tl_light.shape == TrafficSignalElement::LEFT_ARROW)
+      return true;
+    if (
+      turn_direction == std::string("right") && tl_light.shape == TrafficSignalElement::RIGHT_ARROW)
+      return true;
+  }
+  return false;
+}
 }  // namespace behavior_velocity_planner

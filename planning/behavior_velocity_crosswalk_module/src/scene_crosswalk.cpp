@@ -272,6 +272,8 @@ bool CrosswalkModule::modifyPathVelocity(PathWithLaneId * path, StopReason * sto
   // Set safe or unsafe
   setSafe(!nearest_stop_factor);
 
+  const bool tl_arrow_solid_on = (planner_data_->traffic_light_id_map);
+
   // Set distance
   // NOTE: If no stop point is inserted, distance to the virtual stop line has to be calculated.
   setDistanceToStop(*path, default_stop_pose, nearest_stop_factor);
