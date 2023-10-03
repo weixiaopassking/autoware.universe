@@ -41,8 +41,7 @@ namespace pointcloud_preprocessor
 {
 PointCloudDataSynchronizerComponent::PointCloudDataSynchronizerComponent(
   const rclcpp::NodeOptions & node_options)
-: Node("point_cloud_time_synchronizer_component", node_options),
-  input_twist_topic_type_(declare_parameter<std::string>("input_twist_topic_type", "twist"))
+: Node("point_cloud_time_synchronizer_component", node_options)
 {
   // initialize debug tool
   {
@@ -130,21 +129,10 @@ PointCloudDataSynchronizerComponent::PointCloudDataSynchronizerComponent(
     }
 
     // Subscribe to the twist
-    if (input_twist_topic_type_ == "twist") {
-      auto twist_cb = std::bind(
-        &PointCloudDataSynchronizerComponent::twist_callback, this, std::placeholders::_1);
-      sub_twist_ = this->create_subscription<geometry_msgs::msg::TwistWithCovarianceStamped>(
-        "~/input/twist", rclcpp::QoS{100}, twist_cb);
-    } else if (input_twist_topic_type_ == "odom") {
-      auto odom_cb =
-        std::bind(&PointCloudDataSynchronizerComponent::odom_callback, this, std::placeholders::_1);
-      sub_odom_ = this->create_subscription<nav_msgs::msg::Odometry>(
-        "~/input/odom", rclcpp::QoS{100}, odom_cb);
-    } else {
-      RCLCPP_ERROR_STREAM(
-        get_logger(), "input_twist_topic_type is invalid: " << input_twist_topic_type_);
-      throw std::runtime_error("input_twist_topic_type is invalid: " + input_twist_topic_type_);
-    }
+    auto twist_cb =
+      std::bind(&PointCloudDataSynchronizerComponent::twist_callback, this, std::placeholders::_1);
+    sub_twist_ = this->create_subscription<autoware_auto_vehicle_msgs::msg::VelocityReport>(
+      "/vehicle/status/velocity_status", rclcpp::QoS{100}, twist_cb);
   }
 
   // Transformed Raw PointCloud2 Publisher
@@ -486,7 +474,7 @@ void PointCloudDataSynchronizerComponent::timer_callback()
 }
 
 void PointCloudDataSynchronizerComponent::twist_callback(
-  const geometry_msgs::msg::TwistWithCovarianceStamped::ConstSharedPtr input)
+  const autoware_auto_vehicle_msgs::msg::VelocityReport::ConstSharedPtr input)
 {
   // if rosbag restart, clear buffer
   if (!twist_ptr_queue_.empty()) {
@@ -507,33 +495,9 @@ void PointCloudDataSynchronizerComponent::twist_callback(
 
   auto twist_ptr = std::make_shared<geometry_msgs::msg::TwistStamped>();
   twist_ptr->header.stamp = input->header.stamp;
-  twist_ptr->twist = input->twist.twist;
-  twist_ptr_queue_.push_back(twist_ptr);
-}
-
-void PointCloudDataSynchronizerComponent::odom_callback(
-  const nav_msgs::msg::Odometry::ConstSharedPtr input)
-{
-  // if rosbag restart, clear buffer
-  if (!twist_ptr_queue_.empty()) {
-    if (rclcpp::Time(twist_ptr_queue_.front()->header.stamp) > rclcpp::Time(input->header.stamp)) {
-      twist_ptr_queue_.clear();
-    }
-  }
-
-  // pop old data
-  while (!twist_ptr_queue_.empty()) {
-    if (
-      rclcpp::Time(twist_ptr_queue_.front()->header.stamp) + rclcpp::Duration::from_seconds(1.0) >
-      rclcpp::Time(input->header.stamp)) {
-      break;
-    }
-    twist_ptr_queue_.pop_front();
-  }
-
-  auto twist_ptr = std::make_shared<geometry_msgs::msg::TwistStamped>();
-  twist_ptr->header.stamp = input->header.stamp;
-  twist_ptr->twist = input->twist.twist;
+  twist_ptr->twist.linear.x = input->longitudinal_velocity;
+  twist_ptr->twist.linear.y = input->lateral_velocity;
+  twist_ptr->twist.angular.z = input->heading_rate;
   twist_ptr_queue_.push_back(twist_ptr);
 }
 
