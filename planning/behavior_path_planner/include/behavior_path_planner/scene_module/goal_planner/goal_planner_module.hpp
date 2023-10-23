@@ -190,6 +190,23 @@ private:
 
 #undef DEFINE_SETTER_GETTER
 
+// struct PullOverData
+// {
+//   std::shared_ptr<PullOverPath> pull_over_path;
+//   std::shared_ptr<PathWithLaneId> stop_path;
+//   std::shared_ptr<PathWithLaneId> prev_stop_path;
+//   std::shared_ptr<PathWithLaneId> prev_stop_path_after_approval;
+//   std::shared_ptr<rclcpp::Time> last_approved_time;
+//   std::shared_ptr<rclcpp::Time> last_increment_time;
+//   std::shared_ptr<rclcpp::Time> last_path_update_time;
+//   std::shared_ptr<Pose> last_approved_pose;
+//   std::optional<GoalCandidate> modified_goal_pose;
+//   Pose refined_goal_pose;
+//   GoalCandidates goal_candidates;
+//   std::vector<PullOverPath> pull_over_path_candidates;
+//   std::optional<Pose> closest_start_pose;
+// };
+
 struct FreespacePlannerDebugData
 {
   bool is_planning{false};
@@ -235,6 +252,7 @@ public:
     [[maybe_unused]] const std::shared_ptr<SceneModuleVisitor> & visitor) const override
   {
   }
+  void postProcess() override;
 
 private:
   // The start_planner activates when it receives a new route,
