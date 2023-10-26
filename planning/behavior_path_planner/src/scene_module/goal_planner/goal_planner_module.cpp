@@ -486,9 +486,9 @@ bool GoalPlannerModule::planFreespacePath()
     {
       const std::lock_guard<std::recursive_mutex> lock(mutex_);
       status_.set_pull_over_path(std::make_shared<PullOverPath>(*freespace_path));
-      status_.set_current_path_idx(0);
-      status_.set_is_safe_static_objects(true);
-      status_.set_modified_goal_pose(goal_candidate);
+      // status_.set_current_path_idx(0);
+      // status_.set_is_safe_static_objects(true);
+      // status_.set_modified_goal_pose(goal_candidate);
       status_.set_last_path_update_time(std::make_shared<rclcpp::Time>(clock_->now()));
       debug_data_.freespace_planner.is_planning = false;
     }

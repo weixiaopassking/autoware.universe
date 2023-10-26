@@ -165,7 +165,7 @@ private:
 
   // save last time and pose
   std::shared_ptr<rclcpp::Time> last_increment_time_;
-  std::shared_ptr<rclcpp::Time> last_path_update_time_;
+  // std::shared_ptr<rclcpp::Time> last_path_update_time_;
 
   // goal modification
   std::optional<GoalCandidate> modified_goal_pose_;
@@ -179,6 +179,17 @@ private:
 
   std::recursive_mutex & mutex_;
 };
+
+class ThreadSafeData
+{
+private:
+  std::shared_ptr<PullOverPath> pull_over_path_{nullptr};
+  std::vector<PullOverPath> pull_over_path_candidates_;
+  GoalCandidates goal_candidates_{};
+  std::optional<GoalCandidate> modified_goal_pose_;
+
+  // std::shared_ptr<rclcpp::Time> last_path_update_time_;  
+}
 
 #undef DEFINE_SETTER_GETTER
 
@@ -329,6 +340,7 @@ private:
   bool isStuck();
   bool hasDecidedPath() const;
   void decideVelocity();
+  bool foundPullOverPath() const;
 
   // validation
   bool hasEnoughDistance(const PullOverPath & pull_over_path) const;
