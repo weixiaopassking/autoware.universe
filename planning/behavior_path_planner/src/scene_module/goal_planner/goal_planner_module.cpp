@@ -538,9 +538,6 @@ void GoalPlannerModule::generateGoalCandidates()
     goal_searcher_->setPlannerData(planner_data_);
     goal_searcher_->setReferenceGoal(status_.get_refined_goal_pose());
     status_.set_goal_candidates(goal_searcher_->search());
-    const auto current_lanes = utils::getExtendedCurrentLanes(
-      planner_data_, parameters_->backward_goal_search_length,
-      parameters_->forward_goal_search_length, false);
     status_.set_closest_goal_candidate_pose(
       goal_searcher_->getClosetGoalCandidateAlongLanes(status_.get_goal_candidates()).goal_pose);
   } else {
