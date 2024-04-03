@@ -73,7 +73,7 @@
         },
         "emergency_state_traj_trans_dev": {
           "type": "number",
-          "description": "If the ego's position is `emergency_state_traj_tran_dev` meter away from the nearest trajectory point, the state will transit to EMERGENCY. [m]",
+          "description": "If the ego's position is `emergency_state_traj_trans_dev` meter away from the nearest trajectory point, the state will transit to EMERGENCY. [m]",
           "default": "3.0"
         },
         "emergency_state_traj_rot_dev": {
