@@ -165,16 +165,15 @@ Then, the velocity can be calculated by providing the current error and time ste
 The default parameters defined in `param/lateral_controller_defaults.param.yaml` are adjusted to the
 AutonomouStuff Lexus RX 450h for under 40 km/h driving.
 
-
 > **STOPPING Parameter (smooth stop)** is enabled if `enable_smooth_stop` is true.
-In smooth stop, strong acceleration (`strong_acc`) will be output first to decrease the ego velocity.
-Then weak acceleration (`weak_acc`) will be output to stop smoothly by decreasing the ego jerk.
-If the ego does not stop in a certain time or some-meter over the stop point, weak acceleration to stop right (`weak_stop_acc`) now will be output.
-If the ego is still running, strong acceleration (`strong_stop_acc`) to stop right now will be output.
+> In smooth stop, strong acceleration (`strong_acc`) will be output first to decrease the ego velocity.
+> Then weak acceleration (`weak_acc`) will be output to stop smoothly by decreasing the ego jerk.
+> If the ego does not stop in a certain time or some-meter over the stop point, weak acceleration to stop right (`weak_stop_acc`) now will be output.
+> If the ego is still running, strong acceleration (`strong_stop_acc`) to stop right now will be output.
 
 > **The `STOPPED` state** assumes that the vehicle is completely stopped with the brakes fully applied.
-Therefore, `stopped_acc` should be set to a value that allows the vehicle to apply the strongest possible brake.
-If `stopped_acc` is not sufficiently low, there is a possibility of sliding down on steep slopes.
+> Therefore, `stopped_acc` should be set to a value that allows the vehicle to apply the strongest possible brake.
+> If `stopped_acc` is not sufficiently low, there is a possibility of sliding down on steep slopes.
 
 {{ json_to_markdown("control/pid_longitudinal_controller/schema/pid_longitudinal_controller.schema.json") }}
 
