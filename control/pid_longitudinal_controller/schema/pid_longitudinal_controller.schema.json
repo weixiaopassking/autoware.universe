@@ -297,7 +297,7 @@
           "default": "-0.1"
         }
       },
-      "required": ["INSERT_PARAMETER_1_NAME", "INSERT_PARAMETER_N_NAME"],
+      "required": ["delay_compensation_time", "enable_smooth_stop", "enable_overshoot_emergency", "enable_large_tracking_error_emergency", "enable_slope_compensation", "enable_keep_stopped_until_steer_convergence", "drive_state_stop_dist", "drive_state_offset_stop_dist", "stopping_state_stop_dist", "stopped_state_entry_duration_time", "stopped_state_entry_vel", "stopped_state_entry_acc", "emergency_state_overshoot_stop_dist", "emergency_state_traj_tran_dev", "emergency_state_traj_rot_dev", "kp", "ki", "kd", "max_out", "min_out", "max_p_effort", "min_p_effort", "max_i_effort", "min_i_effort", "max_d_effort", "min_d_effort", "lpf_vel_error_gain", "enable_integration_at_low_speed", "current_vel_threshold_pid_integration", "time_threshold_before_pid_integration", "enable_brake_keeping_before_stop", "brake_keeping_acc", "smooth_stop_max_strong_acc", "smooth_stop_min_strong_acc", "smooth_stop_weak_acc", "smooth_stop_weak_stop_acc", "smooth_stop_strong_stop_acc", "smooth_stop_max_fast_vel", "smooth_stop_min_running_vel", "smooth_stop_min_running_acc", "smooth_stop_weak_stop_time", "smooth_stop_weak_stop_dist", "smooth_stop_strong_stop_dist", "stopped_vel", "stopped_acc", "stopped_jerk", "emergency_vel", "emergency_acc", "emergency_jerk", "max_acc", "min_acc", "max_jerk", "min_jerk", "lpf_pitch_gain", "slope_source", "adaptive_trajectory_velocity_th", "max_pitch_rad", "min_pitch_rad"],
       "additionalProperties": false
     }
   },
