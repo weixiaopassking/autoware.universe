@@ -311,7 +311,7 @@
         "stopped_state_entry_vel",
         "stopped_state_entry_acc",
         "emergency_state_overshoot_stop_dist",
-        "emergency_state_traj_tran_dev",
+        "emergency_state_traj_trans_dev",
         "emergency_state_traj_rot_dev",
         "kp",
         "ki",
