@@ -297,4 +297,4 @@ double AvoidanceByLaneChange::calcLateralOffset() const
   }
   return additional_lat_offset;
 }
-}  // namespace autoware
+}  // namespace autoware::behavior_path_planner
