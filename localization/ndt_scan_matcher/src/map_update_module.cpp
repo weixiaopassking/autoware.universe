@@ -35,8 +35,7 @@ MapUpdateModule::MapUpdateModule(
     *secondary_ndt_ptr_ = *ndt_ptr_;
   } else {
     std::stringstream message;
-    message << "Error at MapUpdateModule::MapUpdateModule."
-            << "`ndt_ptr_` is a null NDT pointer.";
+    message << "Error at MapUpdateModule::MapUpdateModule." << "`ndt_ptr_` is a null NDT pointer.";
     throw std::runtime_error(message.str());
   }
 
