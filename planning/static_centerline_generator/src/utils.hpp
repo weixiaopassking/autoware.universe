@@ -12,12 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef STATIC_CENTERLINE_GENERATOR__UTILS_HPP_
-#define STATIC_CENTERLINE_GENERATOR__UTILS_HPP_
-
-#include "type_alias.hpp"
+#ifndef UTILS_HPP_
+#define UTILS_HPP_
 
 #include "route_handler/route_handler.hpp"
+#include "type_alias.hpp"
 
 #include <rclcpp/time.hpp>
 
@@ -56,4 +55,4 @@ MarkerArray create_distance_text_marker(
 }  // namespace utils
 }  // namespace static_centerline_generator
 
-#endif  // STATIC_CENTERLINE_GENERATOR__UTILS_HPP_
+#endif  // UTILS_HPP_

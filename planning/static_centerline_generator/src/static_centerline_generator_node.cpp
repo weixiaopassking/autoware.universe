@@ -12,11 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "centerline_source/bag_ego_trajectory_based_centerline.hpp"
 #include "static_centerline_generator_node.hpp"
-#include "type_alias.hpp"
-#include "utils.hpp"
 
+#include "centerline_source/bag_ego_trajectory_based_centerline.hpp"
 #include "lanelet2_extension/utility/message_conversion.hpp"
 #include "lanelet2_extension/utility/query.hpp"
 #include "lanelet2_extension/utility/utilities.hpp"
@@ -27,6 +25,8 @@
 #include "static_centerline_generator/msg/points_with_lane_id.hpp"
 #include "tier4_autoware_utils/geometry/geometry.hpp"
 #include "tier4_autoware_utils/ros/parameter.hpp"
+#include "type_alias.hpp"
+#include "utils.hpp"
 
 #include <geography_utils/lanelet2_projector.hpp>
 #include <mission_planner/mission_planner_plugin.hpp>

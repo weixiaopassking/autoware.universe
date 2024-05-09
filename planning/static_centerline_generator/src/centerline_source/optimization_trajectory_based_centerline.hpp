@@ -12,12 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef STATIC_CENTERLINE_GENERATOR__CENTERLINE_SOURCE__OPTIMIZATION_TRAJECTORY_BASED_CENTERLINE_HPP_  // NOLINT
-#define STATIC_CENTERLINE_GENERATOR__CENTERLINE_SOURCE__OPTIMIZATION_TRAJECTORY_BASED_CENTERLINE_HPP_  // NOLINT
-
-#include "type_alias.hpp"
+#ifndef CENTERLINE_SOURCE__OPTIMIZATION_TRAJECTORY_BASED_CENTERLINE_HPP_  // NOLINT
+#define CENTERLINE_SOURCE__OPTIMIZATION_TRAJECTORY_BASED_CENTERLINE_HPP_  // NOLINT
 
 #include "rclcpp/rclcpp.hpp"
+#include "type_alias.hpp"
 
 #include <vector>
 
@@ -40,5 +39,5 @@ private:
 };
 }  // namespace static_centerline_generator
 // clang-format off
-#endif  // STATIC_CENTERLINE_GENERATOR__CENTERLINE_SOURCE__OPTIMIZATION_TRAJECTORY_BASED_CENTERLINE_HPP_  // NOLINT
+#endif  // CENTERLINE_SOURCE__OPTIMIZATION_TRAJECTORY_BASED_CENTERLINE_HPP_  // NOLINT
 // clang-format on

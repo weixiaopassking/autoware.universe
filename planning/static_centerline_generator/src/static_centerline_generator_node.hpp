@@ -12,16 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef STATIC_CENTERLINE_GENERATOR__STATIC_CENTERLINE_GENERATOR_NODE_HPP_
-#define STATIC_CENTERLINE_GENERATOR__STATIC_CENTERLINE_GENERATOR_NODE_HPP_
+#ifndef STATIC_CENTERLINE_GENERATOR_NODE_HPP_
+#define STATIC_CENTERLINE_GENERATOR_NODE_HPP_
 
 #include "centerline_source/optimization_trajectory_based_centerline.hpp"
-#include "type_alias.hpp"
-
 #include "rclcpp/rclcpp.hpp"
 #include "static_centerline_generator/srv/load_map.hpp"
 #include "static_centerline_generator/srv/plan_path.hpp"
 #include "static_centerline_generator/srv/plan_route.hpp"
+#include "type_alias.hpp"
 #include "vehicle_info_util/vehicle_info_util.hpp"
 
 #include <geography_utils/lanelet2_projector.hpp>
@@ -117,4 +116,4 @@ private:
   vehicle_info_util::VehicleInfo vehicle_info_;
 };
 }  // namespace static_centerline_generator
-#endif  // STATIC_CENTERLINE_GENERATOR__STATIC_CENTERLINE_GENERATOR_NODE_HPP_
+#endif  // STATIC_CENTERLINE_GENERATOR_NODE_HPP_

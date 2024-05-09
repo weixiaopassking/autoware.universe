@@ -13,10 +13,10 @@
 // limitations under the License.
 
 #include "centerline_source/bag_ego_trajectory_based_centerline.hpp"
-#include "static_centerline_generator_node.hpp"
 
 #include "rclcpp/serialization.hpp"
 #include "rosbag2_cpp/reader.hpp"
+#include "static_centerline_generator_node.hpp"
 
 #include <nav_msgs/msg/odometry.hpp>
 
