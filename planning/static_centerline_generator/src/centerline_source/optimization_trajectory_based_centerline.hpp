@@ -15,8 +15,9 @@
 #ifndef STATIC_CENTERLINE_GENERATOR__CENTERLINE_SOURCE__OPTIMIZATION_TRAJECTORY_BASED_CENTERLINE_HPP_  // NOLINT
 #define STATIC_CENTERLINE_GENERATOR__CENTERLINE_SOURCE__OPTIMIZATION_TRAJECTORY_BASED_CENTERLINE_HPP_  // NOLINT
 
+#include "type_alias.hpp"
+
 #include "rclcpp/rclcpp.hpp"
-#include "static_centerline_generator/type_alias.hpp"
 
 #include <vector>
 

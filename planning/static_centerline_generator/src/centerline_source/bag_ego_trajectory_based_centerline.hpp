@@ -15,8 +15,9 @@
 #ifndef STATIC_CENTERLINE_GENERATOR__CENTERLINE_SOURCE__BAG_EGO_TRAJECTORY_BASED_CENTERLINE_HPP_
 #define STATIC_CENTERLINE_GENERATOR__CENTERLINE_SOURCE__BAG_EGO_TRAJECTORY_BASED_CENTERLINE_HPP_
 
+#include "type_alias.hpp"
+
 #include "rclcpp/rclcpp.hpp"
-#include "static_centerline_generator/type_alias.hpp"
 
 #include <vector>
 
